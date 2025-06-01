@@ -29,8 +29,8 @@ A comprehensive forex education platform that serves as a client portal for stud
 
 4. Create a `.env` file in the root directory with:
    ```
-   MONGODB_URI=your_mongodb_connection_string
-   JWT_SECRET=your_jwt_secret
+   MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
+   JWT_SECRET=your-super-secret-jwt-key-2024
    PORT=5000
    ```
 
