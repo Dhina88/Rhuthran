@@ -1,0 +1,4 @@
+Clients Portal
+1) access to arc funding
+2) access broker's web  (2/3 broker)
+3) all resources (videos(students must leave a question, and rhut should be able to answer), lessons)
