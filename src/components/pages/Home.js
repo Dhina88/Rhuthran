@@ -12,24 +12,6 @@ const Home = () => {
       <div className="hero">
         <div className="hero-content">
           <h1>Welcome to Aurum Fx Portal</h1>
-          <p className="hero-subtitle">Your gateway to professional forex education and development</p>
-          {!isAuthenticated ? (
-            <div className="cta-buttons">
-              <Link to="/register" className="btn btn-primary">
-                Get Started
-              </Link>
-              <Link to="/login" className="btn btn-secondary">
-                Login
-              </Link>
-            </div>
-          ) : (
-            <div className="welcome-back">
-              <h2>Welcome back, {user.name}!</h2>
-              <Link to="/dashboard" className="btn btn-primary">
-                Go to Dashboard
-              </Link>
-            </div>
-          )}
         </div>
       </div>
 
@@ -70,19 +52,27 @@ const Home = () => {
         <div className="feature-grid">
           <div className="feature-card">
             <h3>Expert Instructors</h3>
-            <p>Learn from industry professionals with years of experience</p>
+            <p>Learn from industry professionals with years of experience in live market trading</p>
           </div>
           <div className="feature-card">
             <h3>Flexible Learning</h3>
-            <p>Study at your own pace with our comprehensive online courses</p>
+            <p>Study at your own pace with our comprehensive online courses and personalized learning paths</p>
           </div>
           <div className="feature-card">
             <h3>Interactive Content</h3>
-            <p>Engage with dynamic course materials and real-world projects</p>
+            <p>Engage with dynamic course materials and real-world trading scenarios</p>
           </div>
           <div className="feature-card">
             <h3>Community Support</h3>
-            <p>Connect with fellow learners and get help when you need it</p>
+            <p>Connect with fellow traders and get help when you need it through our active community</p>
+          </div>
+          <div className="feature-card">
+            <h3>Live Trading Sessions</h3>
+            <p>Join daily live trading sessions where you can learn and trade alongside experienced professionals</p>
+          </div>
+          <div className="feature-card">
+            <h3>Proven Track Record</h3>
+            <p>Our systematic approach and proven strategies have helped countless students achieve consistent profitability</p>
           </div>
         </div>
       </div>
@@ -124,9 +114,23 @@ const Home = () => {
             </div>
           </div>
           <div className="registration-cta">
-            <Link to="/register" className="btn btn-primary btn-large">
-              Start Your Trading Journey Today
-            </Link>
+            {!isAuthenticated ? (
+              <div className="cta-buttons">
+                <Link to="/register" className="btn btn-primary btn-large">
+                  Get Started
+                </Link>
+                <Link to="/login" className="btn btn-secondary btn-large">
+                  Login
+                </Link>
+              </div>
+            ) : (
+              <div className="welcome-back">
+                <h2>Welcome back, {user.name}!</h2>
+                <Link to="/dashboard" className="btn btn-primary btn-large">
+                  Go to Dashboard
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
