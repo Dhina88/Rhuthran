@@ -1,12 +1,13 @@
 .home {
   width: 100%;
   overflow-x: hidden;
+  background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+  color: white;
+  min-height: 100vh;
 }
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
-  color: white;
   padding: 100px 0;
   text-align: center;
   position: relative;
@@ -19,9 +20,10 @@
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   margin-bottom: 20px;
   font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .hero-subtitle {
@@ -47,14 +49,14 @@
 }
 
 .btn-primary {
-  background-color: #00c853;
-  color: white;
+  background-color: #ffd700;
+  color: #1a237e;
 }
 
 .btn-secondary {
   background-color: transparent;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid #ffd700;
+  color: #ffd700;
 }
 
 .btn:hover {
@@ -62,10 +64,24 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+.btn-large {
+  padding: 20px 40px;
+  font-size: 1.3rem;
+}
+
+/* Glass Card Effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  margin: 40px 20px;
+  overflow: hidden;
+}
+
 /* Profile Section */
 .profile-section {
   padding: 100px 0;
-  background-color: #f5f5f5;
 }
 
 .container {
@@ -78,7 +94,8 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 50px;
-  color: #1a237e;
+  color: #ffd700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .profile-content {
@@ -96,7 +113,8 @@
   height: 300px;
   object-fit: cover;
   border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border: 3px solid #ffd700;
 }
 
 .profile-details {
@@ -106,12 +124,12 @@
 .profile-details h3 {
   font-size: 2rem;
   margin-bottom: 10px;
-  color: #1a237e;
+  color: #ffd700;
 }
 
 .profile-details h4 {
   font-size: 1.2rem;
-  color: #666;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 20px;
 }
 
@@ -119,7 +137,7 @@
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 30px;
-  color: #444;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .achievements {
@@ -130,31 +148,36 @@
 
 .achievement-item {
   text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
 }
 
 .achievement-item .number {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: #1a237e;
+  color: #ffd700;
   display: block;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .achievement-item .label {
   font-size: 0.9rem;
-  color: #666;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Features Section */
 .features {
   padding: 100px 0;
-  background-color: white;
 }
 
 .features h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 50px;
-  color: #1a237e;
+  color: #ffd700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .feature-grid {
@@ -167,57 +190,62 @@
 }
 
 .feature-card {
-  background-color: white;
+  background: rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
   transition: transform 0.3s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .feature-card h3 {
   font-size: 1.3rem;
   margin-bottom: 15px;
-  color: #1a237e;
+  color: #ffd700;
 }
 
 .feature-card p {
-  color: #666;
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
 }
 
 /* Portal Features Section */
 .portal-features {
   padding: 100px 0;
-  background-color: #f5f5f5;
 }
 
 .portal-features h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 50px;
-  color: #1a237e;
+  color: #ffd700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .portal-features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
+  margin-bottom: 60px;
 }
 
 .portal-feature-card {
-  background-color: white;
+  background: rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
   transition: transform 0.3s ease;
 }
 
 .portal-feature-card:hover {
   transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .feature-icon {
@@ -228,12 +256,18 @@
 .portal-feature-card h3 {
   font-size: 1.3rem;
   margin-bottom: 15px;
-  color: #1a237e;
+  color: #ffd700;
 }
 
 .portal-feature-card p {
-  color: #666;
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
+}
+
+.registration-cta {
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px;
 }
 
 /* Responsive Design */
@@ -258,9 +292,14 @@
   
   .achievements {
     justify-content: center;
+    flex-wrap: wrap;
   }
   
   .portal-features-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .glass-card {
+    margin: 20px 10px;
   }
 } 

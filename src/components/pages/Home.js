@@ -11,7 +11,7 @@ const Home = () => {
       {/* Hero Section */}
       <div className="hero">
         <div className="hero-content">
-          <h1>Welcome to Client Portal</h1>
+          <h1>Welcome to Aurum Fx Portal</h1>
           <p className="hero-subtitle">Your gateway to professional forex education and development</p>
           {!isAuthenticated ? (
             <div className="cta-buttons">
@@ -34,7 +34,7 @@ const Home = () => {
       </div>
 
       {/* Profile Section */}
-      <div className="profile-section">
+      <div className="profile-section glass-card">
         <div className="container">
           <h2>Meet Your Mentor</h2>
           <div className="profile-content">
@@ -43,7 +43,7 @@ const Home = () => {
             </div>
             <div className="profile-details">
               <h3>Rhuthran</h3>
-              <h4>Professional Forex Trader & Educator</h4>
+              <h4>Professional Forex Trader & Lead Instructor at Aurum Fx</h4>
               <p>With over a decade of experience in forex trading, I've developed a comprehensive understanding of the market dynamics and successful trading strategies. My passion lies in helping aspiring traders master the art of forex trading through structured education and practical guidance.</p>
               <div className="achievements">
                 <div className="achievement-item">
@@ -65,8 +65,8 @@ const Home = () => {
       </div>
 
       {/* Features Section */}
-      <div className="features">
-        <h2>Why Choose Us</h2>
+      <div className="features glass-card">
+        <h2>Why Choose Aurum Fx</h2>
         <div className="feature-grid">
           <div className="feature-card">
             <h3>Expert Instructors</h3>
@@ -88,7 +88,7 @@ const Home = () => {
       </div>
 
       {/* Portal Features Section */}
-      <div className="portal-features">
+      <div className="portal-features glass-card">
         <div className="container">
           <h2>What You Can Do in Our Portal</h2>
           <div className="portal-features-grid">
@@ -122,6 +122,11 @@ const Home = () => {
               <h3>Community Access</h3>
               <p>Join our trading community to share experiences and learn from fellow traders</p>
             </div>
+          </div>
+          <div className="registration-cta">
+            <Link to="/register" className="btn btn-primary btn-large">
+              Start Your Trading Journey Today
+            </Link>
           </div>
         </div>
       </div>
