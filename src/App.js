@@ -19,39 +19,71 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route
-                path="/dashboard"
-                element={
-                  <PrivateRoute>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route 
+              path="/login" 
+              element={
+                <div className="container">
+                  <Login />
+                </div>
+              } 
+            />
+            <Route 
+              path="/register" 
+              element={
+                <div className="container">
+                  <Register />
+                </div>
+              } 
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <div className="container">
                     <Dashboard />
-                  </PrivateRoute>
-                }
-              />
-              <Route path="/courses" element={<CourseList />} />
-              <Route path="/courses/:id" element={<CourseDetail />} />
-              <Route
-                path="/create-course"
-                element={
-                  <PrivateRoute>
+                  </div>
+                </PrivateRoute>
+              }
+            />
+            <Route 
+              path="/courses" 
+              element={
+                <div className="container">
+                  <CourseList />
+                </div>
+              } 
+            />
+            <Route 
+              path="/courses/:id" 
+              element={
+                <div className="container">
+                  <CourseDetail />
+                </div>
+              } 
+            />
+            <Route
+              path="/create-course"
+              element={
+                <PrivateRoute>
+                  <div className="container">
                     <CreateCourse />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/profile"
-                element={
-                  <PrivateRoute>
+                  </div>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute>
+                  <div className="container">
                     <Profile />
-                  </PrivateRoute>
-                }
-              />
-            </Routes>
-          </div>
+                  </div>
+                </PrivateRoute>
+              }
+            />
+          </Routes>
         </div>
       </Router>
     </AuthProvider>
