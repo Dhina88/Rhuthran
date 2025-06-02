@@ -1,125 +1,150 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
 import './Dashboard.css';
 
 const Dashboard = () => {
-  const [enrolledCourses, setEnrolledCourses] = useState([]);
-  const [teachingCourses, setTeachingCourses] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const { user } = useAuth();
-
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const config = {
-          headers: {
-            'x-auth-token': token
-          }
-        };
-
-        // Fetch enrolled courses for students
-        if (user.role === 'student') {
-          const res = await axios.get('http://localhost:5000/api/courses', config);
-          setEnrolledCourses(res.data.filter(course => 
-            course.students.includes(user._id)
-          ));
-        }
-
-        // Fetch courses created by teacher
-        if (user.role === 'teacher') {
-          const res = await axios.get('http://localhost:5000/api/courses', config);
-          setTeachingCourses(res.data.filter(course => 
-            course.instructor._id === user._id
-          ));
-        }
-
-        setLoading(false);
-      } catch (err) {
-        setError(err.response?.data?.msg || 'Error fetching courses');
-        setLoading(false);
-      }
-    };
-
-    fetchCourses();
-  }, [user]);
-
-  if (loading) return <div className="loading">Loading...</div>;
-  if (error) return <div className="error">{error}</div>;
 
   return (
     <div className="dashboard">
-      <div className="dashboard-header">
-        <h1>Dashboard</h1>
-        {user.role === 'teacher' && (
-          <Link to="/create-course" className="btn btn-primary">
-            Create New Course
+      <div className="dashboard-sidebar">
+        <div className="user-profile">
+          <div className="user-avatar">
+            {user.name.charAt(0)}
+          </div>
+          <h3>{user.name}</h3>
+          <p>Premium Member</p>
+        </div>
+        <nav className="dashboard-nav">
+          <Link to="/dashboard" className="nav-item active">
+            <span className="icon">📊</span>
+            Dashboard
           </Link>
-        )}
+          <Link to="/courses" className="nav-item">
+            <span className="icon">📚</span>
+            My Courses
+          </Link>
+          <Link to="/live-trading" className="nav-item">
+            <span className="icon">📈</span>
+            Live Trading
+          </Link>
+          <Link to="/analysis" className="nav-item">
+            <span className="icon">🎯</span>
+            Market Analysis
+          </Link>
+          <Link to="/community" className="nav-item">
+            <span className="icon">👥</span>
+            Community
+          </Link>
+          <Link to="/resources" className="nav-item">
+            <span className="icon">📱</span>
+            Resources
+          </Link>
+        </nav>
       </div>
 
-      {user.role === 'student' && (
-        <div className="dashboard-section">
-          <h2>My Enrolled Courses</h2>
-          {enrolledCourses.length === 0 ? (
-            <div className="empty-state">
-              <p>You haven't enrolled in any courses yet.</p>
-              <Link to="/courses" className="btn btn-secondary">
-                Browse Courses
-              </Link>
-            </div>
-          ) : (
-            <div className="course-grid">
-              {enrolledCourses.map(course => (
-                <div key={course._id} className="course-card">
-                  <h3>{course.title}</h3>
-                  <p>{course.description}</p>
-                  <div className="course-meta">
-                    <span>Instructor: {course.instructor.name}</span>
-                    <span>Level: {course.level}</span>
-                  </div>
-                  <Link to={`/courses/${course._id}`} className="btn btn-secondary">
-                    Continue Learning
-                  </Link>
-                </div>
-              ))}
-            </div>
-          )}
+      <div className="dashboard-main">
+        <div className="dashboard-header">
+          <div className="welcome-section">
+            <h1>Welcome back, {user.name}</h1>
+            <p>Here's what's happening with your trading journey</p>
+          </div>
         </div>
-      )}
 
-      {user.role === 'teacher' && (
-        <div className="dashboard-section">
-          <h2>My Courses</h2>
-          {teachingCourses.length === 0 ? (
-            <div className="empty-state">
-              <p>You haven't created any courses yet.</p>
-              <Link to="/create-course" className="btn btn-secondary">
-                Create Your First Course
-              </Link>
+        <div className="dashboard-stats">
+          <div className="stat-card">
+            <div className="stat-icon">📊</div>
+            <div className="stat-info">
+              <h3>Course Progress</h3>
+              <p className="stat-value">75%</p>
+              <p className="stat-label">Overall Completion</p>
             </div>
-          ) : (
-            <div className="course-grid">
-              {teachingCourses.map(course => (
-                <div key={course._id} className="course-card">
-                  <h3>{course.title}</h3>
-                  <p>{course.description}</p>
-                  <div className="course-meta">
-                    <span>{course.students.length} Students</span>
-                    <span>Level: {course.level}</span>
-                  </div>
-                  <Link to={`/courses/${course._id}`} className="btn btn-secondary">
-                    Manage Course
-                  </Link>
-                </div>
-              ))}
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">⏱️</div>
+            <div className="stat-info">
+              <h3>Learning Hours</h3>
+              <p className="stat-value">24h</p>
+              <p className="stat-label">This Month</p>
             </div>
-          )}
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">🎯</div>
+            <div className="stat-info">
+              <h3>Trading Score</h3>
+              <p className="stat-value">85</p>
+              <p className="stat-label">Performance Rating</p>
+            </div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">🏆</div>
+            <div className="stat-info">
+              <h3>Achievements</h3>
+              <p className="stat-value">12</p>
+              <p className="stat-label">Badges Earned</p>
+            </div>
+          </div>
         </div>
-      )}
+
+        <div className="dashboard-content">
+          <div className="content-section">
+            <div className="section-header">
+              <h2>Current Courses</h2>
+              <Link to="/courses" className="btn btn-secondary">View All</Link>
+            </div>
+            <div className="course-cards">
+              <div className="course-card">
+                <div className="course-progress">
+                  <div className="progress-bar" style={{ width: '75%' }}></div>
+                </div>
+                <h3>Forex Fundamentals</h3>
+                <p>Master the basics of forex trading</p>
+                <Link to="/course/1" className="btn btn-primary">Continue</Link>
+              </div>
+              <div className="course-card">
+                <div className="course-progress">
+                  <div className="progress-bar" style={{ width: '45%' }}></div>
+                </div>
+                <h3>Technical Analysis</h3>
+                <p>Learn advanced chart patterns</p>
+                <Link to="/course/2" className="btn btn-primary">Continue</Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="content-section">
+            <div className="section-header">
+              <h2>Upcoming Live Sessions</h2>
+              <Link to="/sessions" className="btn btn-secondary">View All</Link>
+            </div>
+            <div className="session-cards">
+              <div className="session-card">
+                <div className="session-time">
+                  <span className="date">JUN 15</span>
+                  <span className="time">10:00 AM</span>
+                </div>
+                <div className="session-info">
+                  <h3>Live Market Analysis</h3>
+                  <p>Join our expert analysts for live market breakdown</p>
+                </div>
+                <button className="btn btn-primary">Join Session</button>
+              </div>
+              <div className="session-card">
+                <div className="session-time">
+                  <span className="date">JUN 16</span>
+                  <span className="time">2:00 PM</span>
+                </div>
+                <div className="session-info">
+                  <h3>Trading Strategy Workshop</h3>
+                  <p>Learn to develop your own trading strategy</p>
+                </div>
+                <button className="btn btn-primary">Join Session</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
