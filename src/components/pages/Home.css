@@ -12,21 +12,18 @@
 .home {
   width: 100%;
   overflow-x: hidden;
-  margin: 0;
-  padding: 0;
+  color: var(--text);
+  background-color: var(--white);
 }
 
 /* Hero Section */
 .hero {
   position: relative;
-  min-height: 100vh;
-  width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
   background-color: var(--white);
   overflow: hidden;
-  margin: 0;
-  padding: 0;
 }
 
 .hero::before {
@@ -42,12 +39,12 @@
 }
 
 .hero-content {
-  width: 100%;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 40px;
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 .hero h1 {
@@ -69,63 +66,11 @@
   opacity: 0.9;
 }
 
-.cta-buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.btn {
-  padding: 18px 40px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-primary {
-  background-color: var(--secondary);
-  color: var(--white);
-}
-
-.btn-secondary {
-  background-color: transparent;
-  border: 2px solid var(--secondary);
-  color: var(--secondary);
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.btn-large {
-  padding: 20px 50px;
-  font-size: 1.2rem;
-}
-
-/* Glass Card Effect */
-.glass-card {
-  background: white;
-  border-radius: 20px;
-  margin: 40px 20px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
 /* Profile Section */
 .profile-section {
-  width: 100vw;
-  margin: 0;
   padding: 120px 0;
   background-color: var(--light-bg);
   position: relative;
-  overflow: hidden;
 }
 
 .profile-section::after {
@@ -139,11 +84,9 @@
 }
 
 .container {
-  width: 100%;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 40px;
-  box-sizing: border-box;
 }
 
 .section-title {
@@ -252,12 +195,9 @@
 
 /* Features Section */
 .features {
-  width: 100vw;
-  margin: 0;
   padding: 120px 0;
   background-color: var(--white);
   position: relative;
-  overflow: hidden;
 }
 
 .feature-grid {
@@ -295,13 +235,10 @@
 
 /* Portal Features Section */
 .portal-features {
-  width: 100vw;
-  margin: 0;
   padding: 120px 0;
   background-color: var(--primary);
   color: var(--white);
   position: relative;
-  overflow: hidden;
 }
 
 .portal-features .section-title {
@@ -350,14 +287,46 @@
   padding: 60px 0 0;
 }
 
-/* Responsive Design */
-@media (max-width: 1400px) {
-  .container {
-    max-width: 100%;
-    padding: 0 40px;
-  }
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }
 
+.btn {
+  padding: 18px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid var(--secondary);
+  color: var(--secondary);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-large {
+  padding: 20px 50px;
+  font-size: 1.2rem;
+}
+
+/* Responsive Design */
 @media (max-width: 1200px) {
   .hero h1 {
     font-size: 4rem;
@@ -386,10 +355,6 @@
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
-  }
-
   .hero h1 {
     font-size: 3rem;
     width: 100%;
@@ -410,9 +375,5 @@
   
   .section-title {
     font-size: 2rem;
-  }
-
-  .profile-image::before {
-    display: none;
   }
 } 
