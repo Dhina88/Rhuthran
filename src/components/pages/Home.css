@@ -13,11 +13,14 @@
 .home {
   background-color: var(--white);
   color: var(--text-dark);
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Hero Section */
 .hero {
   min-height: 100vh;
+  width: 100vw;
   background: var(--primary);
   position: relative;
   display: flex;
@@ -47,9 +50,8 @@
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  width: 100%;
+  padding: 0 5vw;
   color: var(--white);
 }
 
@@ -78,14 +80,14 @@
 /* Profile Section */
 .profile-section {
   padding: 100px 0;
+  width: 100vw;
   background: var(--bg-light);
   position: relative;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  width: 100%;
+  padding: 0 5vw;
 }
 
 .section-title {
@@ -200,6 +202,7 @@
 /* Features Section */
 .features {
   padding: 100px 0;
+  width: 100vw;
   background: var(--white);
 }
 
@@ -253,6 +256,7 @@
 /* Portal Features Section */
 .portal-features {
   padding: 100px 0;
+  width: 100vw;
   background: var(--primary);
   position: relative;
   overflow: hidden;
@@ -383,10 +387,6 @@
   .hero h1 {
     font-size: 3.5rem;
   }
-  
-  .container {
-    padding: 0 40px;
-  }
 }
 
 @media (max-width: 992px) {
@@ -408,10 +408,6 @@
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2.5rem;
-  }
-  
-  .container {
-    padding: 0 20px;
   }
   
   .achievements {
