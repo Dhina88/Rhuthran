@@ -3,8 +3,19 @@ import axios from 'axios';
 
 const AuthContext = createContext();
 
+// Test credentials
+const TEST_CREDENTIALS = {
+  username: 'dhina',
+  password: '12345',
+  name: 'Dhina'
+};
+
 export const useAuth = () => {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
 };
 
 export const AuthProvider = ({ children }) => {
@@ -37,17 +48,17 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const login = async (formData) => {
-    try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, formData);
-      const { token, user } = response.data;
-      localStorage.setItem('token', token);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      setCurrentUser(user);
+  const login = (username, password) => {
+    // Check against test credentials
+    if (username === TEST_CREDENTIALS.username && password === TEST_CREDENTIALS.password) {
+      setCurrentUser({
+        name: TEST_CREDENTIALS.name,
+        username: TEST_CREDENTIALS.username
+      });
       setError(null);
       return true;
-    } catch (err) {
-      setError(err.response?.data?.message || 'An error occurred during login');
+    } else {
+      setError('Invalid credentials');
       return false;
     }
   };

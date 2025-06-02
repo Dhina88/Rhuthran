@@ -5,25 +5,22 @@ import './Auth.css';
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: ''
   });
-  const [loading, setLoading] = useState(false);
-  const { login, error, clearError } = useAuth();
+  const { login, error } = useAuth();
   const navigate = useNavigate();
 
-  const { email, password } = formData;
-
   const handleChange = (e) => {
-    clearError();
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    const success = await login(formData);
-    setLoading(false);
+    const success = login(formData.username, formData.password);
     if (success) {
       navigate('/dashboard');
     }
@@ -32,33 +29,38 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h2>Login</h2>
+        <h2>Welcome Back</h2>
+        <p>Enter your credentials to access your account</p>
+        
         {error && <div className="alert alert-danger">{error}</div>}
+        
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="username">Username</label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
               onChange={handleChange}
               required
             />
           </div>
+          
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
               name="password"
-              value={password}
+              value={formData.password}
               onChange={handleChange}
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary" disabled={loading}>
-            {loading ? 'Loading...' : 'Login'}
+          
+          <button type="submit" className="btn btn-primary btn-block">
+            Login
           </button>
         </form>
       </div>
