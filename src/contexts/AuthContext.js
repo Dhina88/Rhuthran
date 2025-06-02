@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 
 // Test credentials
 const TEST_CREDENTIALS = {
@@ -10,47 +10,14 @@ const TEST_CREDENTIALS = {
   name: 'Dhina'
 };
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
-
 export const AuthProvider = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    // Check if user is logged in
-    const token = localStorage.getItem('token');
-    if (token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      // Fetch user data
-      fetchUser();
-    } else {
-      setLoading(false);
-    }
-  }, []);
-
-  const fetchUser = async () => {
-    try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/auth/me`);
-      setCurrentUser(response.data);
-    } catch (err) {
-      console.error('Error fetching user:', err);
-      localStorage.removeItem('token');
-      delete axios.defaults.headers.common['Authorization'];
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const login = (username, password) => {
-    // Check against test credentials
     if (username === TEST_CREDENTIALS.username && password === TEST_CREDENTIALS.password) {
+      setIsAuthenticated(true);
       setCurrentUser({
         name: TEST_CREDENTIALS.name,
         username: TEST_CREDENTIALS.username
@@ -63,46 +30,29 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const register = async (formData) => {
-    try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/register`, formData);
-      const { token, user } = response.data;
-      localStorage.setItem('token', token);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      setCurrentUser(user);
-      setError(null);
-      return true;
-    } catch (err) {
-      setError(err.response?.data?.message || 'An error occurred during registration');
-      return false;
-    }
-  };
-
   const logout = () => {
-    localStorage.removeItem('token');
-    delete axios.defaults.headers.common['Authorization'];
+    setIsAuthenticated(false);
     setCurrentUser(null);
-  };
-
-  const clearError = () => {
     setError(null);
   };
 
   const value = {
-    currentUser,
-    loading,
+    isAuthenticated,
+    user: currentUser,
     error,
     login,
-    register,
-    logout,
-    clearError
+    logout
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
 };
 
 export default AuthContext; 

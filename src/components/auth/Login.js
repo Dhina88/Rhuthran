@@ -1,66 +1,57 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import './Auth.css';
+import './Login.css';
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: ''
-  });
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const { login, error } = useAuth();
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const success = login(formData.username, formData.password);
+    const success = login(username, password);
     if (success) {
       navigate('/dashboard');
     }
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
+    <div className="login-container">
+      <div className="login-card">
         <h2>Welcome Back</h2>
         <p>Enter your credentials to access your account</p>
         
-        {error && <div className="alert alert-danger">{error}</div>}
-        
         <form onSubmit={handleSubmit}>
+          {error && <div className="error-message">{error}</div>}
+          
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input
               type="text"
               id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username"
               required
             />
           </div>
-          
+
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
               required
             />
           </div>
-          
-          <button type="submit" className="btn btn-primary btn-block">
-            Login
+
+          <button type="submit" className="login-button">
+            Sign In
           </button>
         </form>
       </div>

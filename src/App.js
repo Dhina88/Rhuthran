@@ -1,104 +1,49 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
-import PrivateRoute from './components/routing/PrivateRoute';
-import Navbar from './components/layout/Navbar';
-import Home from './components/pages/Home';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Login from './components/auth/Login';
-import Register from './components/auth/Register';
 import Dashboard from './components/dashboard/Dashboard';
-import CourseList from './components/courses/CourseList';
-import CourseDetail from './components/courses/CourseDetail';
-import CreateCourse from './components/courses/CreateCourse';
-import Profile from './components/profile/Profile';
+import Landing from './components/landing/Landing';
 import './App.css';
 
-// Component to handle navbar visibility
+// Protected Route component
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = useAuth();
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+  
+  return children;
+};
+
 const AppContent = () => {
-  const location = useLocation();
-  const hideNavbarPaths = ['/login', '/register', '/dashboard'];
-  const shouldShowNavbar = !hideNavbarPaths.includes(location.pathname);
+  const { isAuthenticated } = useAuth();
 
   return (
-    <div className="App">
-      {shouldShowNavbar && <Navbar />}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route 
-          path="/login" 
-          element={
-            <div className="container">
-              <Login />
-            </div>
-          } 
-        />
-        <Route 
-          path="/register" 
-          element={
-            <div className="container">
-              <Register />
-            </div>
-          } 
-        />
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute>
-              <div className="container">
-                <Dashboard />
-              </div>
-            </PrivateRoute>
-          }
-        />
-        <Route 
-          path="/courses" 
-          element={
-            <div className="container">
-              <CourseList />
-            </div>
-          } 
-        />
-        <Route 
-          path="/courses/:id" 
-          element={
-            <div className="container">
-              <CourseDetail />
-            </div>
-          } 
-        />
-        <Route
-          path="/create-course"
-          element={
-            <PrivateRoute>
-              <div className="container">
-                <CreateCourse />
-              </div>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <div className="container">
-                <Profile />
-              </div>
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={!isAuthenticated ? <Landing /> : <Navigate to="/dashboard" />} />
+      <Route path="/login" element={!isAuthenticated ? <Login /> : <Navigate to="/dashboard" />} />
+      <Route 
+        path="/dashboard" 
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        } 
+      />
+    </Routes>
   );
 };
 
-function App() {
+const App = () => {
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <AppContent />
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
-}
+};
 
 export default App; 
