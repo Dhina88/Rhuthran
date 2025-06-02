@@ -11,7 +11,12 @@ const Home = () => {
       {/* Hero Section */}
       <div className="hero">
         <div className="hero-content">
-          <h1>Master the Markets with <br />Aurum Fx Academy</h1>
+          <div className="hero-text">
+            <h1>Master the Markets with <br />Aurum Fx Academy</h1>
+          </div>
+          <div className="hero-image">
+            <img src="/images/trading-dashboard.png" alt="Aurum Fx Trading Dashboard" />
+          </div>
         </div>
       </div>
 

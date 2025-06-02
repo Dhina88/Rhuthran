@@ -1,59 +1,73 @@
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #1976d2;
-  color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-brand a {
-  color: white;
-  text-decoration: none;
+.navbar-brand {
   font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.navbar-nav {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 1.5rem;
-}
-
-.nav-item a,
-.nav-item button {
-  color: white;
+  font-weight: 700;
+  color: var(--white);
   text-decoration: none;
-  font-size: 1rem;
-  transition: opacity 0.3s ease;
+  transition: color 0.3s ease;
 }
 
-.nav-item a:hover,
-.nav-item button:hover {
-  opacity: 0.8;
+.navbar-brand:hover {
+  color: var(--secondary);
 }
 
-.btn-link {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
   font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--secondary);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Add background on scroll */
+.navbar.scrolled {
+  background: rgba(30, 30, 47, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    padding: 1rem;
+  .navbar-container {
+    padding: 0 1rem;
   }
-
-  .navbar-nav {
-    margin-top: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
+  
+  .navbar-links {
     gap: 1rem;
+  }
+  
+  .nav-link {
+    padding: 0.5rem;
   }
 } 
