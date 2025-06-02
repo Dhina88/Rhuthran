@@ -11,9 +11,9 @@ const Dashboard = () => {
       <div className="dashboard-sidebar">
         <div className="user-profile">
           <div className="user-avatar">
-            {user.name.charAt(0)}
+            {user?.name?.charAt(0)}
           </div>
-          <h3>{user.name}</h3>
+          <h3>{user?.name}</h3>
           <p>Premium Member</p>
         </div>
         <nav className="dashboard-nav">
@@ -47,7 +47,7 @@ const Dashboard = () => {
       <div className="dashboard-main">
         <div className="dashboard-header">
           <div className="welcome-section">
-            <h1>Welcome back, {user.name}</h1>
+            <h1>Welcome back, {user?.name}</h1>
             <p>Here's what's happening with your trading journey</p>
           </div>
         </div>
