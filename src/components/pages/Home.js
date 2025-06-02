@@ -11,34 +11,34 @@ const Home = () => {
       {/* Hero Section */}
       <div className="hero">
         <div className="hero-content">
-          <h1>Transform Your Trading Journey with <span>Aurum Fx</span></h1>
+          <h1>Master the Markets with <br />Aurum Fx Academy</h1>
         </div>
       </div>
 
       {/* Profile Section */}
       <div className="profile-section">
         <div className="container">
-          <h2 className="section-title">Meet Your Mentor</h2>
+          <h2 className="section-title">Learn from the Best</h2>
           <div className="profile-content">
             <div className="profile-image">
-              <img src="/images/mentor-profile.jpg" alt="Rhuthran" />
+              <img src="/images/mentor-profile.jpg" alt="Rhuthran - Forex Trading Mentor" />
             </div>
             <div className="profile-details">
               <h3>Rhuthran</h3>
-              <h4>Professional Forex Trader & Lead Instructor at Aurum Fx</h4>
-              <p>With over a decade of experience in forex trading, I've developed a comprehensive understanding of market dynamics and successful trading strategies. My passion lies in helping aspiring traders master the art of forex trading through structured education and practical guidance. At Aurum Fx, we focus on developing disciplined traders who can consistently profit from the markets.</p>
+              <h4>Lead Trading Strategist & Founder</h4>
+              <p>With a proven track record in forex trading and a passion for education, I've dedicated my career to helping traders master the markets. At Aurum Fx, we combine technical expertise with practical trading experience to develop traders who can consistently succeed in the dynamic world of forex trading.</p>
               <div className="achievements">
                 <div className="achievement-item">
                   <span className="number">10+</span>
-                  <span className="label">Years Trading</span>
+                  <span className="label">Years Trading Experience</span>
                 </div>
                 <div className="achievement-item">
                   <span className="number">1000+</span>
-                  <span className="label">Students Mentored</span>
+                  <span className="label">Successful Students</span>
                 </div>
                 <div className="achievement-item">
                   <span className="number">85%</span>
-                  <span className="label">Success Rate</span>
+                  <span className="label">Student Success Rate</span>
                 </div>
               </div>
             </div>
@@ -49,31 +49,31 @@ const Home = () => {
       {/* Features Section */}
       <div className="features">
         <div className="container">
-          <h2 className="section-title">Why Choose Aurum Fx</h2>
+          <h2 className="section-title">The Aurum Fx Advantage</h2>
           <div className="feature-grid">
             <div className="feature-card">
-              <h3>Expert Mentorship</h3>
-              <p>Learn directly from successful traders with proven track records in live market conditions</p>
+              <h3>Strategic Mentorship</h3>
+              <p>Get personalized guidance from experienced traders who understand market dynamics and risk management</p>
             </div>
             <div className="feature-card">
-              <h3>Structured Learning</h3>
-              <p>Follow our carefully designed curriculum that takes you from basics to advanced trading strategies</p>
+              <h3>Advanced Analysis</h3>
+              <p>Learn professional technical and fundamental analysis techniques used by institutional traders</p>
             </div>
             <div className="feature-card">
-              <h3>Live Trading Sessions</h3>
-              <p>Join daily live trading sessions where you can learn and trade alongside professionals</p>
+              <h3>Live Trading Room</h3>
+              <p>Trade alongside professionals in our live trading sessions and learn real-time market analysis</p>
             </div>
             <div className="feature-card">
               <h3>Risk Management</h3>
-              <p>Master the art of protecting your capital with our proven risk management techniques</p>
+              <p>Master proven risk management strategies that protect and grow your trading capital</p>
             </div>
             <div className="feature-card">
-              <h3>Community Support</h3>
-              <p>Join a community of dedicated traders who support and motivate each other</p>
+              <h3>Trading Psychology</h3>
+              <p>Develop the mindset of successful traders and learn to manage emotions while trading</p>
             </div>
             <div className="feature-card">
-              <h3>Proven Results</h3>
-              <p>Our systematic approach has helped numerous students achieve consistent profitability</p>
+              <h3>Proven Systems</h3>
+              <p>Access battle-tested trading systems that deliver consistent results in any market condition</p>
             </div>
           </div>
         </div>
@@ -82,54 +82,54 @@ const Home = () => {
       {/* Portal Features Section */}
       <div className="portal-features">
         <div className="container">
-          <h2 className="section-title">What You'll Get Access To</h2>
+          <h2 className="section-title">Your Path to Success</h2>
           <div className="portal-features-grid">
             <div className="portal-feature-card">
               <div className="feature-icon">💰</div>
-              <h3>Prop Firm Funding</h3>
-              <p>Get connected with top prop firms and access substantial trading capital to scale your trading</p>
+              <h3>Prop Firm Preparation</h3>
+              <p>Get specialized training to pass prop firm challenges and access large trading capitals</p>
             </div>
             <div className="portal-feature-card">
               <div className="feature-icon">📊</div>
-              <h3>Premium Analysis</h3>
-              <p>Receive daily market analysis and trading opportunities from our expert analysts</p>
+              <h3>Daily Market Analysis</h3>
+              <p>Receive professional market analysis and high-probability trading setups daily</p>
             </div>
             <div className="portal-feature-card">
               <div className="feature-icon">📚</div>
-              <h3>Course Library</h3>
-              <p>Access our comprehensive library of video lessons, tutorials, and trading resources</p>
+              <h3>Comprehensive Library</h3>
+              <p>Access our extensive collection of trading resources, videos, and educational materials</p>
             </div>
             <div className="portal-feature-card">
               <div className="feature-icon">🎯</div>
               <h3>Strategy Development</h3>
-              <p>Learn to develop and refine your own trading strategies with our guidance</p>
+              <p>Learn to create and optimize your own trading strategies for consistent profits</p>
             </div>
             <div className="portal-feature-card">
               <div className="feature-icon">💬</div>
-              <h3>1-on-1 Mentoring</h3>
-              <p>Get personalized feedback and guidance through regular mentoring sessions</p>
+              <h3>Personal Coaching</h3>
+              <p>Get one-on-one mentoring sessions to accelerate your trading progress</p>
             </div>
             <div className="portal-feature-card">
-              <div className="feature-icon">🤝</div>
-              <h3>Broker Support</h3>
-              <p>Get assistance in selecting and setting up accounts with reliable forex brokers</p>
+              <div className="feature-icon">🌐</div>
+              <h3>Global Community</h3>
+              <p>Join a community of dedicated traders who support and inspire each other</p>
             </div>
           </div>
           <div className="registration-cta">
             {!isAuthenticated ? (
               <div className="cta-buttons">
                 <Link to="/register" className="btn btn-primary btn-large">
-                  Start Your Journey
+                  Begin Your Journey
                 </Link>
                 <Link to="/login" className="btn btn-secondary btn-large">
-                  Member Login
+                  Member Access
                 </Link>
               </div>
             ) : (
               <div className="welcome-back">
                 <h2>Welcome back, {user.name}!</h2>
                 <Link to="/dashboard" className="btn btn-primary btn-large">
-                  Go to Dashboard
+                  Access Dashboard
                 </Link>
               </div>
             )}
